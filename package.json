@@ -1,0 +1,35 @@
+{
+	"name": "@owlebot/template",
+	"version": "0.1.0",
+	"description": "Owlebot template.",
+	"author": "Khaaz <khaaz.dev@gmail.com>, Xerstom <xerstomdev@outlook.fr>",
+	"link": "https://github.com/owlebot/template",
+	"main": "./src/index.js",
+	"type": "module",
+	"license": "MIT",
+	"engines": {
+		"node": ">=20.9.0"
+	},
+	"private": true,
+	"dependencies": {},
+	"devDependencies": {
+		"@owlebot/eslint-config": "^1.0.0",
+		"eslint": "^8.33.0"
+	},
+	"scripts": {
+		"lint": "eslint src/**/*.js",
+		"test": "yarn run lint",
+		"start": "node src/index.js",
+		"start:watch": "node src/index.js --watch",
+		"start:debug": "node src/index.js --inspect"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/owlebot/template.git"
+	},
+	"bugs": {
+		"url": "https://github.com/owlebot/template/issues"
+	},
+	"homepage": "https://github.com/owlebot/template#readme",
+	"keywords": []
+}

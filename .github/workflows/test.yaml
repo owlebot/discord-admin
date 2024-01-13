@@ -1,0 +1,55 @@
+name: Test
+
+on: 
+  push:
+  workflow_call:
+    secrets:
+      SSH_GITHUB_KEY:
+        required: false
+
+# Add PUBLIC_KEY to shared account "owle-bot" as a ssh keys
+# Add PRIVATE_KEY to CI as SSH_GITHUB_KEY
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20.9.0
+          cache: yarn
+      - name: Install SSH key
+        uses: shimataro/ssh-key-action@v2
+        continue-on-error: true
+        with:
+          known_hosts: unnecessary
+          key: ${{ secrets.SSH_GITHUB_KEY }}
+      - name: Install dependencies
+        run: yarn install --network-concurrency 1
+        env:
+          CI: true
+      - name: Lint
+        run: yarn lint
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20.9.0
+          cache: yarn
+      - name: Install SSH key
+        uses: shimataro/ssh-key-action@v2
+        continue-on-error: true
+        with:
+          known_hosts: unnecessary
+          key: ${{ secrets.SSH_GITHUB_KEY }}
+      - name: Install dependencies
+        run: yarn install --network-concurrency 1
+        env:
+          CI: true
+      - name: Test
+        run: yarn test
