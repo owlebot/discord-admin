@@ -5,11 +5,13 @@ import { ExpressServer } from "slash-create";
 
 import { CustomSlashCreator } from "./client.js";
 
+const PORT = 8080;
+
 const creator = new CustomSlashCreator( {
 	applicationID: process.env.DISCORD_APP_ID,
 	publicKey: process.env.DISCORD_PUBLIC_KEY,
 	token: process.env.DISCORD_BOT_TOKEN,
-	serverPort: 8080,
+	serverPort: PORT,
 	serverHost: "0.0.0.0",
 } );
 
@@ -33,4 +35,4 @@ creator.startServer();
 // slash up work so this is not needed in most cases
 creator.syncCommands();
 
-console.log("LIFECYCLE: ", `Starting server at "localhost:${8080}/interactions"`);
+console.log("LIFECYCLE: ", `Starting server at "localhost:${PORT}/interactions"`);

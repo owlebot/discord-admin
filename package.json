@@ -18,15 +18,16 @@
 	},
 	"devDependencies": {
 		"@flydotio/dockerfile": "^0.5.0",
-		"@owlebot/eslint-config": "^1.0.0",
+		"@owlebot/eslint-config": "^1.2.0",
 		"dotenv": "^16.3.1",
-		"eslint": "^8.33.0"
+		"eslint": "^8.54.0"
 	},
 	"scripts": {
 		"lint": "eslint src/**/*.js",
 		"test": "yarn run lint",
 		"secret:pull": "infisical export --path=\"discord-admin\" --env=prod > .env",
-		"start": "node src/index.js",
+		"start": "node -r dotenv/config src/index.js",
+		"start:prod": "node src/index.js",
 		"start:watch": "node --watch -r dotenv/config src/index.js",
 		"start:debug": "node --inspect -r dotenv/config src/index.js"
 	},
