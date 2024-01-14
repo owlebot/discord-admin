@@ -1,6 +1,7 @@
-# template
+# discord-admin
 
-Template repo for future node projects
+Discord admin bot for the Owlebot Discord server.  
+Use Owlebot open-api.  
 
 ## Setup
 

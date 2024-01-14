@@ -1,9 +1,9 @@
 {
-	"name": "@owlebot/template",
+	"name": "@owlebot/discord-admin",
 	"version": "0.1.0",
-	"description": "Owlebot template.",
+	"description": "Owlebot admin discord bot.",
 	"author": "Khaaz <khaaz.dev@gmail.com>, Xerstom <xerstomdev@outlook.fr>",
-	"link": "https://github.com/owlebot/template",
+	"link": "https://github.com/owlebot/discord-admin",
 	"main": "./src/index.js",
 	"type": "module",
 	"license": "MIT",
@@ -11,25 +11,32 @@
 		"node": ">=20.9.0"
 	},
 	"private": true,
-	"dependencies": {},
+	"dependencies": {
+		"body-parser": "^1.19.2",
+		"express": "^4.18.2",
+		"slash-create": "^5.11.0"
+	},
 	"devDependencies": {
+		"@flydotio/dockerfile": "^0.5.0",
 		"@owlebot/eslint-config": "^1.0.0",
+		"dotenv": "^16.3.1",
 		"eslint": "^8.33.0"
 	},
 	"scripts": {
 		"lint": "eslint src/**/*.js",
 		"test": "yarn run lint",
+		"secret:pull": "infisical export --path=\"discord-admin\" --env=prod > .env",
 		"start": "node src/index.js",
-		"start:watch": "node src/index.js --watch",
-		"start:debug": "node src/index.js --inspect"
+		"start:watch": "node --watch -r dotenv/config src/index.js",
+		"start:debug": "node --inspect -r dotenv/config src/index.js"
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/owlebot/template.git"
+		"url": "git+https://github.com/owlebot/discord-admin.git"
 	},
 	"bugs": {
-		"url": "https://github.com/owlebot/template/issues"
+		"url": "https://github.com/owlebot/discord-admin/issues"
 	},
-	"homepage": "https://github.com/owlebot/template#readme",
+	"homepage": "https://github.com/owlebot/discord-admin#readme",
 	"keywords": []
 }
