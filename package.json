@@ -13,7 +13,7 @@
 	"private": true,
 	"dependencies": {
 		"body-parser": "^1.19.2",
-		"express": "^4.18.2",
+		"express": "^4.19.2",
 		"slash-create": "^5.11.0"
 	},
 	"devDependencies": {
